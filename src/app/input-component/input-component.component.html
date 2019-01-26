@@ -1,0 +1,12 @@
+<div class="form-group">
+  <ng-container *ngFor="let input of data">
+    <ng-template [ngIf]="input.type == 'text'">
+      <label [for]="input.for">{{input.for}}</label>
+      <input type="text" [name]="input.for" [id]="input.for" [placeholder]="input.placeholder" />
+    </ng-template>
+    <ng-template [ngIf]="input.type == 'number'">
+      <label [for]="input.for">{{input.for}}</label>
+      <input type="number" [name]="input.for" [id]="input.for" [placeholder]="input.placeholder" />
+    </ng-template>
+  </ng-container>
+</div>

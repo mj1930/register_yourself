@@ -1,0 +1,29 @@
+<!-- <div class="container">
+  <div class="row">
+    <form >
+      <app-input-component [data]="inputArray" ></app-input-component> 
+    </form>
+  </div>
+</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <label class="col-sm-3">Select your field type here</label>
+      <select class="selectpicker col-sm-3" [(ngModel)] = "selectedElement">
+        <option *ngFor="let value of selectArray" [value]="value.text">{{value.label}}</option>
+      </select>
+      <div class="col-sm-6" *ngIf="selectedElement == 'checkbox'">
+        <label class="col-sm-4">No. Of Checkboxes</label>
+        <input class='col-sm-2' type="text" placeholder="# of checkbox" [(ngModel)]="totalCheckboxes">
+      </div>
+      <div class="col-sm-6" *ngIf="selectedElement == 'select'">
+        <label class="col-sm-4">No. Of option</label>
+        <input class='col-sm-2' type="text" placeholder="# of options" [(ngModel)]="totalOptions">
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <button class="col-sm-3" type="button" (click)="addNewElement()"> Add new</button>
+    </div>
+    <app-create [data]="inputArray"></app-create>
+  </div>
+</div>

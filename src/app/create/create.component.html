@@ -1,0 +1,76 @@
+<div class="row">
+  <ng-container *ngFor="let input of data; let i = index;">
+    <div class="col-sm-12">
+      <ng-template [ngIf]="input.type == 'text'">
+        <div class="col-sm-5">
+          <input class="form-control" type="text" [placeholder]="input.for" [(ngModel)]="input.fieldName" [id]="input.id">
+        </div>
+        <div class="col-sm-5">
+          <input class="form-control" type="text" name="name_{{i}}" [id]="input.id" [placeholder]="input.placeholder" />
+        </div>
+        <div class="col-sm-2" (click)="removeElement(input.id)">
+          <i class="fas fa-trash-alt" role="button"></i>
+        </div>
+      </ng-template>
+    </div>
+    <div class="col-sm-12">
+      <ng-template [ngIf]="input.type == 'number'">
+        <div class="col-sm-5">
+          <input class="form-control" type="text" [placeholder]="input.for" [(ngModel)]="input.fieldName" [id]="input.id">
+        </div>
+        <div class="col-sm-5">
+          <input class="form-control" type="number" name="name_{{i}}" [id]="input.id" [placeholder]="input.placeholder" />
+        </div>
+        <div class="col-sm-2" (click)="removeElement(input.id)">
+          <i class="fas fa-trash-alt" role="button"></i>
+        </div>
+      </ng-template>
+    </div>
+    <div class="col-sm-12">
+      <ng-template [ngIf]="input.type == 'password'">
+        <div class="col-sm-5">
+          <input class="form-control" type="text" [placeholder]="input.for" [(ngModel)]="input.fieldName" [id]="input.id">
+        </div>
+        <div class="col-sm-5">
+          <input class="form-control" type="password" name="name_{{i}}" [id]="input.id" [placeholder]="input.placeholder" />
+        </div>
+        <div class="col-sm-2" (click)="removeElement(input.id)">
+          <i class="fas fa-trash-alt" role="button"></i>
+        </div>
+      </ng-template>
+    </div>
+    <div *ngIf="input.type == 'checkbox'">
+      <ng-template ngFor let-checkbox [ngForOf]="input.totalCheckboxes" let-j="index">
+        <div class="col-sm-12">
+          <div class="col-sm-5">
+            <input class="form-control" type="checkbox" [id]="checkbox.id" [value]="checkbox.label">
+          </div>
+          <div class="col-sm-5">
+            <input class="form-control" type="text" [(ngModel)]="checkbox.label">
+          </div>
+          <div class="col-sm-2" (click)="removeElement(input.id)">
+            <i class="fas fa-trash-alt" role="button"></i>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+    <div *ngIf="input.type == 'select'">
+      <div class="col-sm-12">
+        <div class="col-sm-10">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+              <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let options of input.totalOptions">
+                <input type="text" class="form-control" [id]="options.id" [(ngModel)]="options.label">
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-2" (click)="removeElement(input.id)">
+          <i class="fas fa-trash-alt" role="button"></i>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
