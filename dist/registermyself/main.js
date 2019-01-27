@@ -99,12 +99,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _createform_createform_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./createform/createform.component */ "./src/app/createform/createform.component.ts");
 /* harmony import */ var _input_component_input_component_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./input-component/input-component.component */ "./src/app/input-component/input-component.component.ts");
 /* harmony import */ var _create_create_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./create/create.component */ "./src/app/create/create.component.ts");
+/* harmony import */ var ngx_webstorage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-webstorage */ "./node_modules/ngx-webstorage/fesm5/ngx-webstorage.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -126,6 +128,7 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+                ngx_webstorage__WEBPACK_IMPORTED_MODULE_8__["NgxWebstorageModule"].forRoot(),
                 _app_routes__WEBPACK_IMPORTED_MODULE_2__["routing"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"]
@@ -154,12 +157,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routing", function() { return routing; });
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _createform_createform_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createform/createform.component */ "./src/app/createform/createform.component.ts");
+/* harmony import */ var _input_component_input_component_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./input-component/input-component.component */ "./src/app/input-component/input-component.component.ts");
+
 
 
 var appRoutes = [
     {
         path: '',
         component: _createform_createform_component__WEBPACK_IMPORTED_MODULE_1__["CreateformComponent"]
+    },
+    {
+        path: 'preview',
+        component: _input_component_input_component_component__WEBPACK_IMPORTED_MODULE_2__["InputComponentComponent"]
     }
 ];
 var routing = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(appRoutes, { useHash: false });
@@ -268,7 +277,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div class=\"container\">\n  <div class=\"row\">\n    <form >\n      <app-input-component [data]=\"inputArray\" ></app-input-component> \n    </form>\n  </div>\n</div> -->\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <label class=\"col-sm-3\">Select your field type here</label>\n      <select class=\"selectpicker col-sm-3\" [(ngModel)] = \"selectedElement\">\n        <option *ngFor=\"let value of selectArray\" [value]=\"value.text\">{{value.label}}</option>\n      </select>\n      <div class=\"col-sm-6\" *ngIf=\"selectedElement == 'checkbox'\">\n        <label class=\"col-sm-4\">No. Of Checkboxes</label>\n        <input class='col-sm-2' type=\"text\" placeholder=\"# of checkbox\" [(ngModel)]=\"totalCheckboxes\">\n      </div>\n      <div class=\"col-sm-6\" *ngIf=\"selectedElement == 'select'\">\n        <label class=\"col-sm-4\">No. Of option</label>\n        <input class='col-sm-2' type=\"text\" placeholder=\"# of options\" [(ngModel)]=\"totalOptions\">\n      </div>\n    </div>\n    <div class=\"col-sm-12\">\n      <button class=\"col-sm-3\" type=\"button\" (click)=\"addNewElement()\"> Add new</button>\n    </div>\n    <app-create [data]=\"inputArray\"></app-create>\n  </div>\n</div>"
+module.exports = "<!-- <div class=\"container\">\n  <div class=\"row\">\n    <form >\n      <app-input-component [data]=\"inputArray\" ></app-input-component> \n    </form>\n  </div>\n</div> -->\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <label class=\"col-sm-3\">Select your field type here</label>\n      <select class=\"selectpicker col-sm-3\" [(ngModel)] = \"selectedElement\">\n        <option *ngFor=\"let value of selectArray\" [value]=\"value.text\">{{value.label}}</option>\n      </select>\n      <div class=\"col-sm-6\" *ngIf=\"selectedElement == 'checkbox'\">\n        <label class=\"col-sm-4\">No. Of Checkboxes</label>\n        <input class='col-sm-2' type=\"text\" placeholder=\"# of checkbox\" [(ngModel)]=\"totalCheckboxes\">\n      </div>\n      <div class=\"col-sm-6\" *ngIf=\"selectedElement == 'select'\">\n        <label class=\"col-sm-4\">No. Of option</label>\n        <input class='col-sm-2' type=\"text\" placeholder=\"# of options\" [(ngModel)]=\"totalOptions\">\n      </div>\n    </div>\n    <div class=\"col-sm-12\">\n      <button class=\"col-sm-3\" type=\"button\" (click)=\"addNewElement()\"> Add new</button>\n    </div>\n    <app-create [data]=\"inputArray\"></app-create>\n    <div class=\"col-sm-3\">\n      <button type='button' (click)=\"showPreview()\" >Preview</button>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -283,7 +292,8 @@ module.exports = "<!-- <div class=\"container\">\n  <div class=\"row\">\n    <fo
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateformComponent", function() { return CreateformComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var ngx_webstorage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-webstorage */ "./node_modules/ngx-webstorage/fesm5/ngx-webstorage.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -295,9 +305,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var CreateformComponent = /** @class */ (function () {
-    function CreateformComponent(formBuilder) {
-        this.formBuilder = formBuilder;
+    function CreateformComponent(router, sessionStorage) {
+        this.router = router;
+        this.sessionStorage = sessionStorage;
         this.inputArray = [];
         this.selectArray = [
             {
@@ -389,13 +401,17 @@ var CreateformComponent = /** @class */ (function () {
             });
         }
     };
+    CreateformComponent.prototype.showPreview = function () {
+        this.sessionStorage.store('data', this.inputArray);
+        this.router.navigate(['/preview']);
+    };
     CreateformComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-createform',
             template: __webpack_require__(/*! ./createform.component.html */ "./src/app/createform/createform.component.html"),
             styles: [__webpack_require__(/*! ./createform.component.css */ "./src/app/createform/createform.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], ngx_webstorage__WEBPACK_IMPORTED_MODULE_2__["SessionStorageService"]])
     ], CreateformComponent);
     return CreateformComponent;
 }());
@@ -411,7 +427,7 @@ var CreateformComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".margin {\n    margin-left: 15px;\n}"
 
 /***/ }),
 
@@ -422,7 +438,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"form-group\">\n  <ng-container *ngFor=\"let input of data\">\n    <ng-template [ngIf]=\"input.type == 'text'\">\n      <label [for]=\"input.for\">{{input.for}}</label>\n      <input type=\"text\" [name]=\"input.for\" [id]=\"input.for\" [placeholder]=\"input.placeholder\" />\n    </ng-template>\n    <ng-template [ngIf]=\"input.type == 'number'\">\n      <label [for]=\"input.for\">{{input.for}}</label>\n      <input type=\"number\" [name]=\"input.for\" [id]=\"input.for\" [placeholder]=\"input.placeholder\" />\n    </ng-template>\n  </ng-container>\n</div>"
+module.exports = "<form id=\"form\" class=\"form-group\">\n  <div class=\"row\">\n    <ng-container *ngFor=\"let input of data; let i = index;\">\n      <div class=\"col-sm-12 formControl\" *ngIf=\"input.type == 'text'\">\n        <!-- <ng-template > -->\n        <div class=\"col-sm-5\">\n          <label class=\"form-control\" [id]=\"i\">{{input.fieldName}}</label>\n        </div>\n        <div class=\"col-sm-5\">\n          <input class=\"form-control\" type=\"text\" name=\"name_{{i}}\" [id]=\"input.id\" [placeholder]=\"input.placeholder\" />\n        </div>\n        <!-- </ng-template> -->\n      </div>\n      <div class=\"col-sm-12 formControl\" *ngIf=\"input.type == 'number'\">\n        <!-- <ng-template > -->\n        <div class=\"col-sm-5\">\n          <label class=\"form-control\" [id]=\"i\">{{input.fieldName}}</label>\n        </div>\n        <div class=\"col-sm-5\">\n          <input class=\"form-control\" type=\"number\" name=\"name_{{i}}\" [id]=\"input.id\" [placeholder]=\"input.placeholder\" />\n        </div>\n        <!-- </ng-template> -->\n      </div>\n      <div class=\"col-sm-12 formControl\" *ngIf=\"input.type == 'password'\">\n        <!-- <ng-template > -->\n        <div class=\"col-sm-5\">\n          <label class=\"form-control\" [id]=\"i\">{{input.fieldName}}</label>\n        </div>\n        <div class=\"col-sm-5\">\n          <input class=\"form-control\" type=\"password\" name=\"name_{{i}}\" [id]=\"input.id\" [placeholder]=\"input.placeholder\" />\n        </div>\n        <!-- </ng-template> -->\n      </div>\n      <div class=\"formControl\" *ngIf=\"input.type == 'checkbox'\">\n        <ng-template ngFor let-checkbox [ngForOf]=\"input.totalCheckboxes\" let-j=\"index\">\n          <div class=\"col-sm-5\">\n            <input class=\"margin\" type=\"checkbox\" [id]=\"checkbox.id\" [value]=\"checkbox.label\">\n            <label>{{checkbox.label}}</label>\n          </div>\n        </ng-template>\n      </div>\n      <div class=\"formControl\" *ngIf=\"input.type == 'select'\">\n        <div class=\"col-sm-12\">\n          <div class=\"col-sm-10\">\n            <select>\n              <option *ngFor=\"let options of input.totalOptions\" class=\"form-control\" [id]=\"options.id\" [value]=\"options.label\">\n                {{options.label}}\n              </option>\n            </select>\n          </div>\n        </div>\n      </div>\n    </ng-container>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"col-sm-6\">\n        <button class=\"btn btn-success\" onclick=\"submitForm()\">Submit</button>\n      </div>\n    </div>\n  </div>\n</form>\n<div class=\"col-sm-12\">\n  <button type=\"button\" (click)=\"saveForm()\">Save</button>\n</div>"
 
 /***/ }),
 
@@ -437,6 +453,8 @@ module.exports = "<div class=\"form-group\">\n  <ng-container *ngFor=\"let input
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InputComponentComponent", function() { return InputComponentComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var ngx_webstorage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-webstorage */ "./node_modules/ngx-webstorage/fesm5/ngx-webstorage.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -447,23 +465,29 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var InputComponentComponent = /** @class */ (function () {
-    function InputComponentComponent() {
+    function InputComponentComponent(sessionStorage, formBuilder) {
+        this.sessionStorage = sessionStorage;
+        this.formBuilder = formBuilder;
         this.data = [];
     }
     InputComponentComponent.prototype.ngOnInit = function () {
+        this.data = this.sessionStorage.retrieve('data');
     };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Array)
-    ], InputComponentComponent.prototype, "data", void 0);
+    InputComponentComponent.prototype.saveForm = function () {
+        this.previewForm = document.getElementById('form');
+        console.log(this.previewForm);
+    };
     InputComponentComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-input-component',
             template: __webpack_require__(/*! ./input-component.component.html */ "./src/app/input-component/input-component.component.html"),
             styles: [__webpack_require__(/*! ./input-component.component.css */ "./src/app/input-component/input-component.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [ngx_webstorage__WEBPACK_IMPORTED_MODULE_1__["SessionStorageService"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]])
     ], InputComponentComponent);
     return InputComponentComponent;
 }());
