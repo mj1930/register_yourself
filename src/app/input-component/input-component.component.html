@@ -1,12 +1,65 @@
-<div class="form-group">
-  <ng-container *ngFor="let input of data">
-    <ng-template [ngIf]="input.type == 'text'">
-      <label [for]="input.for">{{input.for}}</label>
-      <input type="text" [name]="input.for" [id]="input.for" [placeholder]="input.placeholder" />
-    </ng-template>
-    <ng-template [ngIf]="input.type == 'number'">
-      <label [for]="input.for">{{input.for}}</label>
-      <input type="number" [name]="input.for" [id]="input.for" [placeholder]="input.placeholder" />
-    </ng-template>
-  </ng-container>
+<form id="form" class="form-group">
+  <div class="row">
+    <ng-container *ngFor="let input of data; let i = index;">
+      <div class="col-sm-12 formControl" *ngIf="input.type == 'text'">
+        <!-- <ng-template > -->
+        <div class="col-sm-5">
+          <label class="form-control" [id]="i">{{input.fieldName}}</label>
+        </div>
+        <div class="col-sm-5">
+          <input class="form-control" type="text" name="name_{{i}}" [id]="input.id" [placeholder]="input.placeholder" />
+        </div>
+        <!-- </ng-template> -->
+      </div>
+      <div class="col-sm-12 formControl" *ngIf="input.type == 'number'">
+        <!-- <ng-template > -->
+        <div class="col-sm-5">
+          <label class="form-control" [id]="i">{{input.fieldName}}</label>
+        </div>
+        <div class="col-sm-5">
+          <input class="form-control" type="number" name="name_{{i}}" [id]="input.id" [placeholder]="input.placeholder" />
+        </div>
+        <!-- </ng-template> -->
+      </div>
+      <div class="col-sm-12 formControl" *ngIf="input.type == 'password'">
+        <!-- <ng-template > -->
+        <div class="col-sm-5">
+          <label class="form-control" [id]="i">{{input.fieldName}}</label>
+        </div>
+        <div class="col-sm-5">
+          <input class="form-control" type="password" name="name_{{i}}" [id]="input.id" [placeholder]="input.placeholder" />
+        </div>
+        <!-- </ng-template> -->
+      </div>
+      <div class="formControl" *ngIf="input.type == 'checkbox'">
+        <ng-template ngFor let-checkbox [ngForOf]="input.totalCheckboxes" let-j="index">
+          <div class="col-sm-5">
+            <input class="margin" type="checkbox" [id]="checkbox.id" [value]="checkbox.label">
+            <label>{{checkbox.label}}</label>
+          </div>
+        </ng-template>
+      </div>
+      <div class="formControl" *ngIf="input.type == 'select'">
+        <div class="col-sm-12">
+          <div class="col-sm-10">
+            <select>
+              <option *ngFor="let options of input.totalOptions" class="form-control" [id]="options.id" [value]="options.label">
+                {{options.label}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-sm-6">
+        <button class="btn btn-success" onclick="submitForm()">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>
+<div class="col-sm-12">
+  <button type="button" (click)="saveForm()">Save</button>
 </div>

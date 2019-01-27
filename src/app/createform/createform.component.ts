@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators as Validators, Form } from '@angular/forms';
-import { InputComponentComponent } from '../input-component/input-component.component';
-import { element } from 'protractor';
+import { Router } from '@angular/router';
+import { SessionStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-createform',
@@ -41,7 +40,7 @@ export class CreateformComponent implements OnInit {
   public elementName: string = 'Type your field name here';
   public totalCheckboxes: number = 2;
   public totalOptions: number = 2;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private sessionStorage: SessionStorageService) { }
 
   ngOnInit() {
     this.inputArray = [
@@ -103,6 +102,9 @@ export class CreateformComponent implements OnInit {
     }
   }
 
-
+  showPreview() {
+    this.sessionStorage.store('data', this.inputArray);
+    this.router.navigate(['/preview']);
+  }
 
 }

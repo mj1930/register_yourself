@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SessionStorageService } from 'ngx-webstorage';
+import { FormBuilder, Validators as Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-input-component',
@@ -7,12 +9,21 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class InputComponentComponent implements OnInit {
 
-  @Input()
-  data: any[] = [];
+  public data: any[] = [];
+  public previewForm;
 
-  constructor() { }
+  constructor(
+    private sessionStorage: SessionStorageService,
+    private formBuilder: FormBuilder,
+  ) { }
 
   ngOnInit() {
+    this.data = this.sessionStorage.retrieve('data');
+  }
+
+  saveForm() {
+    this.previewForm = document.getElementById('form');
+    console.log(this.previewForm);
   }
 
 }

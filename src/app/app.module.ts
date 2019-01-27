@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CreateformComponent } from './createform/createform.component';
 import { InputComponentComponent } from './input-component/input-component.component';
 import { CreateComponent } from './create/create.component';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CreateComponent } from './create/create.component';
   ],
   imports: [
     BrowserModule,
+    NgxWebstorageModule.forRoot(),
     routing,
     FormsModule,
     ReactiveFormsModule
