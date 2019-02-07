@@ -1,32 +1,1000 @@
-<!-- <div class="container">
-  <div class="row">
-    <form >
-      <app-input-component [data]="inputArray" ></app-input-component> 
-    </form>
-  </div>
-</div> -->
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <label class="col-sm-3">Select your field type here</label>
-      <select class="selectpicker col-sm-3" [(ngModel)] = "selectedElement">
-        <option *ngFor="let value of selectArray" [value]="value.text">{{value.label}}</option>
-      </select>
-      <div class="col-sm-6" *ngIf="selectedElement == 'checkbox'">
-        <label class="col-sm-4">No. Of Checkboxes</label>
-        <input class='col-sm-2' type="text" placeholder="# of checkbox" [(ngModel)]="totalCheckboxes">
+<!-- <app-header></app-header> -->
+<main>
+  <h1>
+    Forms
+    <a href="new-form.html">Back</a>
+  </h1>
+  <div class="flex-grid">
+    <div>
+      <h2>
+        Form Title
+        <a href="#save" class="flRight">Save</a>
+      </h2>
+      <div class="row col-sm-12 p-0 m-0 pt-1 pb-1">
+        <app-formproperty></app-formproperty>
+        <div class="col-sm-6 p-0" style="margin-left: 5px; margin-right: 5px; max-width: calc(50% - 10px);">
+          <h2>
+            Form Title
+          </h2>
+          <div class="flex-grid">
+            <ul class="connectedUl sortableUl ulNoStyle subContWrap pageTemplate ui-sortable topAlign">
+              <li class="nofldDiv sortenabled" style="display: list-item;">
+                <h2 class="heading frmTitle">Start building!</h2>
+                <p class="frmDesc">Drag fields from the left panel and drop here to add them to your form.</p>
+              </li>
+            </ul>
+          </div>
+          <!-- This are draged form element -->
+          <div class="flex-grid">
+            <ul class="connectedUl sortableUl ulNoStyle subContWrap pageTemplate ui-sortable topAlign" style="min-height: 500px;">
+              <li class="tempFrmWrapper small sortenabled selectedType">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <label class="labelName">Single Line</label>
+                  </div>
+                  <div class="tempContDiv">
+                    <span class="textIcon fieldBg input-addon"></span>
+                    <input type="text">
+                    <p class="instruction"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper small sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Multi Line</label>
+                  </div>
+                  <div class="tempContDiv">
+                    <textarea></textarea>
+                    <p class="instruction"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper nsmall sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Number</label>
+                  </div>
+                  <div class="tempContDiv">
+                    <span class="numberIcon fieldBg input-addon"></span>
+                    <input type="text">
+                    <p class="instruction"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper small sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Decimal</label>
+                  </div>
+                  <div class="tempContDiv">
+                    <span class="decimalIcon fieldBg input-addon"></span>
+                    <input type="text">
+                    <div class="clearBoth"></div>
+                    <p class="instruction"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper name namemedium sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Name</label>
+                  </div>
+                  <div class="tempContDiv twoType">
+                    <div style="display:block;" class="nameWrapper">
+                      <span> <span class="nameIcon fieldBg input-addon"></span> <input type="text"><label>First</label>
+                      </span>
+                      <span> <span class="nameIcon fieldBg input-addon"></span> <input type="text"><label>Last</label>
+                      </span>
+                      <div class="clearBoth"></div>
+                    </div>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper address addrlarge sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Address</label>
+                  </div>
+                  <div class="tempContDiv address">
+                    <div class="addrCont">
+                      <ul>
+                        <li><span class="addOne"><input type="text"><label>Street Address</label></span></li>
+                        <li><span class="addOne"><input type="text"><label>Address Line 2</label></span></li>
+                        <li><span class="addtwo flLeft"><input type="text"><label>City</label></span></li>
+                        <li><span class="addtwo flLeft"><input type="text"><label>State/Region/Province</label></span></li>
+                        <li><span class="addtwo flLeft"><input type="text"><label>Postal / Zip Code</label></span></li>
+                        <li>
+                          <span class="addtwo flLeft">
+                            <div class="zf_selectbox customDropArrow">
+                              <select class="defaltCount">
+                                <option>-Select-</option>
+                              </select>
+                            </div>
+                            <label>Country</label>
+                          </span>
+                        </li>
+                      </ul>
+                      <div class="clearBoth"></div>
+                      <p class="instruction"></p>
+                    </div>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper phone small sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Phone</label>
+                  </div>
+                  <div class="tempContDiv">
+                    <div style="display:block;">
+                      <span class="phoneIcon fieldBg input-addon"></span> <input type="text">
+                      <p class="instruction" style="display:block;"></p>
+                    </div>
+                    <div class="tempActions">
+                      <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                        Duplicate
+                      </a>
+                      <a class="deleteField_icon" title="Delete">
+                        Delete
+                      </a>
+                    </div>
+                    <div class="clearBoth"></div>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper email small sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Email</label>
+                  </div>
+                  <div class="tempContDiv">
+                    <span class="emailIcon fieldBg input-addon"></span> <input type="text">
+                    <p class="instruction"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper date sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Date</label>
+                  </div>
+                  <div class="tempContDiv">
+                    <div style="display:block;">
+                      <span class="widthDefault">
+                        <input type="text"><label elname="dateFormat">dd-MMM-yyyy</label>
+                      </span>
+                      <span class="calendarIcon"></span>
+                      <div class="clearBoth"></div>
+                      <p class="instruction" style="display:block;"></p>
+                    </div>
+                    <div class="clearBoth"></div>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper time sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Time</label>
+                  </div>
+                  <div class="tempContDiv">
+                    <span>
+                      <div class="zf_selectbox customDropArrow">
+                        <select disabled="disabled">
+                          <option>10</option>
+                        </select>
+                      </div>
+                      <label class="formSubInfoText formSubInfoAlign">HH</label>
+                    </span>
+                    <span class="symbols">:</span>
+                    <span>
+                      <div class="zf_selectbox customDropArrow">
+                        <select disabled="disabled">
+                          <option>10</option>
+                        </select>
+                      </div>
+                      <label class="formSubInfoText formSubInfoAlign">MM</label>
+                    </span>
+                    <span class="symbols" style="display: inline;">:</span>
+                    <span style="display: inline;">
+                      <div class="zf_selectbox customDropArrow">
+                        <select disabled="disabled">
+                          <option>AM</option>
+                          <option>PM</option>
+                        </select>
+                      </div>
+                      <!--label class="formSubInfoText formSubInfoAlign">AM / PM</label-->
+                    </span>
+                    <div class="clearBoth"></div>
+                    <p class="instruction" style="display:block;"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper dropdown small sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Dropdown</label>
+                  </div>
+                  <div class="tempContDiv">
+                    <div class="zf_selectbox customDropArrow">
+                      <select disabled="disabled">
+                        <option>First Choice</option>
+                        <option>Second Choice</option>
+                        <option>Third Choice</option>
+                      </select>
+                    </div>
+                    <p class="instruction"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper oneColumns sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Radio</label>
+                  </div>
+                  <div class="tempContDiv radioAndCb">
+                    <span><input type="radio"><label>First Choice</label></span>
+                    <span><input type="radio"><label>Second Choice</label></span>
+                    <span><input type="radio"><label>Third Choice</label></span>
+                    <div class="clearBoth"></div>
+                    <p class="instruction"> </p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper small sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Multiple Choice</label>
+                  </div>
+                  <div class="tempContDiv mSelect">
+                    <select disabled="disabled" multiple="">
+                      <option>First Choice</option>
+                      <option>Second Choice</option>
+                      <option>Third Choice</option>
+                    </select>
+                    <p class="instruction"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper oneColumns sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName" elname="field-label">Checkbox</label>
+                  </div>
+                  <div class="tempContDiv radioAndCb">
+                    <span><input type="checkbox" class="checkBoxType"><label>First Choice</label></span>
+                    <span><input type="checkbox" class="checkBoxType"><label>Second Choice</label></span>
+                    <span><input type="checkbox" class="checkBoxType"><label>Third Choice</label></span>
+                    <div class="clearBoth"></div>
+                    <p class="instruction"> </p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper decesion sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                  </div>
+                  <div class="tempContDiv decisionFld" elemid="tempcontdiv">
+                    <input type="checkbox" elname="checkbox-input">
+                    <div class="fldsHeaderDiv"><label class="labelName" elname="field-label">Decision Box</label></div>
+                    <p class="instruction"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper date date-time sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Date-Time</label>
+                  </div>
+                  <div class="tempContDiv">
+                    <span class="widthDefault"> <input type="text"></span>
+                    <span class="calendarIcon"></span>
+                    <div class="clearBoth"></div>
+                    <span><label>dd-MMM-yyyy HH:MM AM/PM</label></span>
+                    <div class="clearBoth"></div>
+                    <p class="instruction" style="display:block;"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper small sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Website</label>
+                  </div>
+                  <div class="tempContDiv">
+                    <span class="websiteIcon fieldBg input-addon"></span> <input type="text">
+                    <p class="instruction" style="display:block;"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper currency csmall sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Currency</label>
+                  </div>
+                  <div class="tempContDiv currencyFld">
+                    <input type="text"><span class="symbol">USD</span>
+                    <div class="clearBoth"></div>
+                    <p class="instruction"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper file_upload sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">File Upload</label>
+                  </div>
+                  <div class="tempContDiv">
+                    <div class="uploadContainer">
+                      <div class="floatText"><em class="uploadIcon"></em>Drag &amp; Drop (or)
+                        <b><a>Choose File</a></b>
+                      </div>
+                    </div>
+                    <p class="instruction"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper file_upload sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="fldsHeaderDiv">
+                    <div class="arrowNav"></div>
+                    <label class="labelName">Image Upload</label>
+                  </div>
+                  <div class="tempContDiv">
+                    <div class="uploadContainer">
+                      <div class="floatText"><em class="uploadIcon"></em>Drag &amp; Drop (or)
+                        <b><a>Choose File</a></b>
+                      </div>
+                    </div>
+                    <p class="instruction"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper section sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="arrowNav"></div>
+                  <div>
+                    <section>
+                      <h2><label class="labelName">My Title</label></h2>
+                      <p></p>
+                    </section>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+              <li class="tempFrmWrapper one Columns sortenabled">
+                <div class="sortable-field-handler ui-sortable-handle">
+                  <div class="arrowNav"></div>
+                  <label class="labelName">Matrix Choice</label>
+                  <div class="tempContDiv matrixTable">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th>Answer A</th>
+                          <th>Answer B</th>
+                          <th>Answer C</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th>First Question</th>
+                          <td><input type="radio" elname="radio-input"></td>
+                          <td><input type="radio" elname="radio-input"></td>
+                          <td><input type="radio" elname="radio-input"></td>
+                        </tr>
+                        <tr>
+                          <th>Second Question</th>
+                          <td><input type="radio" elname="radio-input"></td>
+                          <td><input type="radio" elname="radio-input"></td>
+                          <td><input type="radio" elname="radio-input"></td>
+                        </tr>
+                        <tr>
+                          <th>Third Question</th>
+                          <td><input type="radio" elname="radio-input"></td>
+                          <td><input type="radio" elname="radio-input"></td>
+                          <td><input type="radio" elname="radio-input"></td>
+                        </tr>
+                        <tr> </tr>
+                      </tbody>
+                    </table>
+                    <p class="instruction"></p>
+                  </div>
+                  <div class="tempActions">
+                    <a href="javascript:;" class="duplicateField_icon" title="Duplicate">
+                      Duplicate
+                    </a>
+                    <a class="deleteField_icon" title="Delete">
+                      Delete
+                    </a>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-3 p-0 m-0">
+          <h2>Form Properties</h2>
+          <div class="flex-grid">
+            <div class="formActFields">
+              <ul class="ulNoStyle ">
+                <li class="formActFieldCont">
+                  <label class="fmActTitle important">Form Title</label>
+                  <div id="frmTitleDiv">
+                    <input type="text" id="form_title" class="actText" maxlength="" value="Form Title">
+                    <!--p class="errorListCont">(Maximum 144 characters)</p-->
+                    <p id="formTitleSpan"></p>
+                  </div>
+                </li>
+                <li class="formActFieldCont">
+                  <label class="fmActTitle">Description</label>
+                  <div id="frmDescDiv">
+                    <textarea id="form_desc" class="actArea"></textarea>
+                    <!--p class="subMgs">(Maximum 144 characters)</p-->
+                    <p id="formDescSpan"></p>
+                  </div>
+                </li>
+                <li class="formActFieldCont">
+                  <label class="fmActTitle">Label Placement</label>
+                  <div class="butTab">
+                    <span class="selected">Top</span>
+                    <span class="">Left</span>
+                    <span class="lastBox">Right</span>
+                    <div class="clearBoth"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex-grid">
+            <div class="formActFields colorBdr">
+              <ul class="ulNoStyle">
+                <li class="formActFieldCont" id="initialValue">
+                  <label class="fmActTitle">Initial Value</label>
+                  <input type="text" class="textBg" style="width:88%;" maxlength="100">
+                  <div class="clearBoth"></div>
+                </li>
+              </ul>
+              <ul class="ulNoStyle">
+                <li class="formActFieldCont">
+                  <div class="flLeft" style="display: block;">
+                    <label class="fmActTitle">Field format</label>
+                    <div class="zf_selectbox dropdownBg zf_Side140">
+                      <select class="fmPropSelectBox">
+                        <option value="INTERNATIONAL">International</option>
+                        <option value="USA-FORMAT">### - ### - ####</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="clearBoth"></div>
+                </li>
+                <li class="formActFieldCont">
+                  <div class="flLeft splitCont">
+                    <label class="fmActTitle">Decimal Points</label>
+                    <div>
+                      <div class="zf_selectbox dropdownBg">
+                        <select class="fmPropSelectBox">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearBoth"></div>
+                </li>
+                <li class="formActFieldCont">
+                  <div class="flLeft splitCont">
+                    <label class="fmActTitle">Decimal Points</label>
+                    <div>
+                      <div class="zf_selectbox dropdownBg">
+                        <select class="fmPropSelectBox">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearBoth"></div>
+                </li>
+                <li class="formActFieldCont" style="display: list-item;">
+                  <label class="fmActTitle">Allowed domains</label>
+                  <div>
+                    <input type="text" placeholder="eg : example.com,example.org" name="alloweddomain">
+                    <span class="intro">By default, all domains are accepted.</span>
+                  </div>
+                </li>
+                <li class="formActFieldCont">
+                  <label class="fmActTitle"> Range </label>
+                  <div class="range">
+                    <span>
+                      <input type="text" class="inputTextField textBg">
+                      <label>Min</label>
+                    </span>
+                    <span>
+                      <input type="text" class="inputTextField textBg">
+                      <label>Max</label>
+                    </span>
+                    <div class="clearBoth"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex-grid">
+            <div class="formActFields">
+              <ul class="ulNoStyle">
+                <li class="formActFieldCont">
+                  <label class="fmActTitle important">Status of Consent</label>
+                  <div>
+                    <input class="actText" type="text">
+                    <p>Maximum length is 500 characters</p>
+                    <span class="intro">This will be used in emails, document merge and integrations.</span>
+                  </div>
+                </li>
+                <li class="formActFieldCont">
+                  <label class="fmActTitle">Validation</label>
+                  <div class="valid">
+                    <span>
+                      <input type="checkbox">
+                      <label>Mandatory</label>
+                    </span>
+                    <span>
+                      <input type="checkbox">
+                      <label>No Duplicates</label>
+                    </span>
+                    <span>
+                      <input type="checkbox">
+                      <label>Allow Negative Value</label>
+                    </span>
+                    <span>
+                      <input type="checkbox">
+                      <label>Require Confirmation</label>
+                    </span>
+                    <span>
+                      <label class="fmActTitle">Confirmation Label</label>
+                      <input type="text" class="textBg" style="width:88%;">
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex-grid">
+            <div class="formActFields colorBdr">
+              <ul class="ulNoStyle">
+                <li class="formActFieldCont">
+                  <label class="fmActTitle">Range</label>
+                  <div class="range">
+                    <span>
+                      <input type="text" class="inputTextField textBg">
+                      <label>Min</label>
+                    </span>
+                    <span>
+                      <input type="text" class="inputTextField textBg">
+                      <label>Max</label>
+                    </span>
+                    <div class="clearBoth"></div>
+                  </div>
+                </li>
+                <li class="formActFieldCont">
+                  <label class="fmActTitle">String Range</label>
+                  <div class="range">
+                    <span>
+                      <input type="text" class="inputTextField textBg">
+                      <label>Min</label>
+                    </span>
+                    <span>
+                      <input type="text" class="inputTextField textBg">
+                      <label>Max</label>
+                    </span>
+                    <span>
+                      <div class="zf_selectbox dropdownBg zf_Side102">
+                        <select class="fmPropSelectBox">
+                          <option value="CHARACTERS">Characters</option>
+                          <option value="WORDS">Words</option>
+                        </select>
+                      </div>
+                      <label>Format</label>
+                    </span>
+                    <div class="clearBoth"></div>
+                  </div>
+                </li>
+                <li class="formActFieldCont">
+                  <label class="fmActTitle">Digit Range</label>
+                  <div class="range">
+                    <span>
+                      <input type="text" class="inputTextField textBg">
+                      <label>Min</label>
+                    </span>
+                    <span>
+                      <input type="text" class="inputTextField textBg">
+                      <label>Max</label>
+                    </span>
+                    <span>
+                      <div class="zf_selectbox dropdownBg zf_Side102">
+                        <select class="fmPropSelectBox">
+                          <option value="DIGITS">Digits</option>
+                          <option value="VALUES">Values</option>
+                        </select>
+                      </div>
+                      <label>Format</label>
+                    </span>
+                    <div class="clearBoth"></div>
+                  </div>
+                </li>
+                <li class="formActFieldCont">
+                  <label class="fmActTitle">Date Range</label>
+                  <div class="dateProp">
+                    <span class="flLeft" id="fromDate">
+                      <input type="text" id="date-range-from">
+                      <label> From </label>
+                    </span>
+                    <span class="flRight" id="toDate">
+                      <input type="text" id="date-range-to">
+                      <label> To </label>
+                    </span>
+                    <div class="clearBoth"></div>
+                  </div>
+                  <div class="dateProp">
+                    <span class="flLeft" id="fromDateTime">
+                      <input type="text" id="datetime-range-from">
+                      <label> From </label>
+                    </span>
+                    <span class="flRight" id="toDateTime">
+                      <input type="text" id="datetime-range-to">
+                      <label> To </label>
+                    </span>
+                    <div class="clearBoth"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex-grid">
+            <div class="formActFields propChoice" style="display: block;">
+              <ul class="ulNoStyle">
+                <li class="formActFieldCont">
+                  <div>
+                    <label class="fmActTitle flLeft">Address Elements</label>
+                    <a class="fldPropLink flRight">Reset</a>
+                    <div class="clearBoth"></div>
+                  </div>
+                  <div class="choicesCont addChoices fldElemMove">
+                    <ul class="ui-sortable">
+                      <li class="sortable-fldElem">
+                        <div class="choices">
+                          <input type="checkbox" name="address-element">
+                          <input type="text" placeholder="Street Address" maxlength="240">
+                          <a class="fldElemMoveIcon movePngIcon ui-sortable-handle"></a>
+                          <div class="clearBoth"></div>
+                        </div>
+                      </li>
+                      <li class="sortable-fldElem">
+                        <div class="choices">
+                          <input type="checkbox" name="address-element">
+                          <input type="text" placeholder="Address Line 2" maxlength="240">
+                          <a class="fldElemMoveIcon movePngIcon ui-sortable-handle"></a>
+                          <div class="clearBoth"></div>
+                        </div>
+                      </li>
+                      <li class="sortable-fldElem">
+                        <div class="choices">
+                          <input type="checkbox" name="address-element">
+                          <input type="text" placeholder="City" maxlength="240">
+                          <a class="fldElemMoveIcon movePngIcon ui-sortable-handle"></a>
+                          <div class="clearBoth"></div>
+                        </div>
+                      </li>
+                      <li class="sortable-fldElem">
+                        <div class="choices">
+                          <input type="checkbox" name="address-element">
+                          <input type="text" placeholder="State/Region/Province" maxlength="240">
+                          <a class="fldElemMoveIcon movePngIcon ui-sortable-handle"></a>
+                          <div class="clearBoth"></div>
+                        </div>
+                      </li>
+                      <li class="sortable-fldElem">
+                        <div class="choices">
+                          <input type="checkbox" name="address-element">
+                          <input type="text" placeholder="Postal / Zip Code" maxlength="240">
+                          <a class="fldElemMoveIcon movePngIcon ui-sortable-handle"></a>
+                          <div class="clearBoth"></div>
+                        </div>
+                      </li>
+                      <li class="sortable-fldElem">
+                        <div class="choices">
+                          <input type="checkbox" name="address-element">
+                          <input type="text" placeholder="Country" maxlength="240">
+                          <a class="fldElemMoveIcon movePngIcon ui-sortable-handle"></a>
+                          <div class="clearBoth"></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex-grid">
+            <div class="formActFields colorBdr">
+              <ul class="ulNoStyle">
+                <li class="formActFieldCont" id="initialValue">
+                  <label class="fmActTitle">Initial Value</label>
+                  <input type="text" class="textBg hasDatepicker flLeft" style="width:88%;" id="field-date-initial-value"
+                    size="12">
+                  <img class="ui-datepicker-trigger calendarIcon" src="/images/spacer.gif" alt="..." title="...">
+                  <div class="clearBoth"></div>
+                </li>
+                <li class="formActFieldCont valid" style="display: list-item;">
+                  <span>
+                    <input type="checkbox">
+                    <label>Autofill Current Date</label>
+                  </span>
+                </li>
+              </ul>
+              <ul class="ulNoStyle" style="display: block;">
+                <li class="formActFieldCont">
+                  <label class="fmActTitle">Range</label>
+                  <div style="display: block;" class="dateProp">
+                    <span class="flLeft" id="fromDate">
+                      <input type="text" id="date-range-from" class="hasDatepicker flLeft">
+                      <img class="ui-datepicker-trigger calendarIcon" src="../images/spacer.gif" alt="..." title="...">
+                      <label> From </label>
+                    </span>
+                    <span class="flRight" id="toDate">
+                      <input type="text" id="date-range-to" class="hasDatepicker flLeft">
+                      <img class="ui-datepicker-trigger calendarIcon" src="/images/spacer.gif" alt="..." title="...">
+                      <label> To </label>
+                    </span>
+                    <div class="clearBoth"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex-grid">
+            <div class="formActFields" style="display: block;">
+              <ul class="ulNoStyle">
+                <li class="formActFieldCont" style="display: list-item;">
+                  <label class="fmActTitle">Allowed File Type</label>
+                  <div>
+                    <input type="text" placeholder="eg. : pdf, txt, doc" name="allowedtype">
+                    <span class="intro">By default, all file types are accepted.</span>
+                  </div>
+                </li>
+                <li class="formActFieldCont" style="display: list-item;">
+                  <label class="fmActTitle">File Upload Limit</label>
+                  <div class="minuteIntervel">
+                    <a href="javascript:;" class="selected" value="1">1</a>
+                    <a href="javascript:;" value="2">2</a>
+                    <a href="javascript:;" value="3">3</a>
+                    <a href="javascript:;" value="4">4</a>
+                    <a href="javascript:;" class="lastBox" value="5">5</a>
+                  </div>
+                </li>
+                <li class="formActFieldCont" style="display: list-item;">
+                  <div class=" ">
+                    <label class="fmActTitle">Max Size Per File</label>
+                    <div class="fileuploadsize">
+                      <input class="flLeft" type="text">
+                      <span class="intro flLeft">MB</span>
+                      <div class="clearBoth"></div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-sm-6" *ngIf="selectedElement == 'select'">
-        <label class="col-sm-4">No. Of option</label>
-        <input class='col-sm-2' type="text" placeholder="# of options" [(ngModel)]="totalOptions">
-      </div>
-    </div>
-    <div class="col-sm-12">
-      <button class="col-sm-3" type="button" (click)="addNewElement()"> Add new</button>
-    </div>
-    <app-create [data]="inputArray"></app-create>
-    <div class="col-sm-3">
-      <button type='button' (click)="showPreview()" >Preview</button>
     </div>
   </div>
-</div>
+</main>

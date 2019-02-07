@@ -7,20 +7,29 @@ import { CreateformComponent } from './createform/createform.component';
 import { InputComponentComponent } from './input-component/input-component.component';
 import { CreateComponent } from './create/create.component';
 import {NgxWebstorageModule} from 'ngx-webstorage';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FormpropertyComponent } from './formproperty/formproperty.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateformComponent,
     InputComponentComponent,
-    CreateComponent
+    CreateComponent,
+    FormpropertyComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     NgxWebstorageModule.forRoot(),
     routing,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
