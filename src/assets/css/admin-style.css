@@ -32,7 +32,7 @@ body {
   min-height: 100%;
 }
 body {
-  display: flex;
+  /* display: flex; */
   font: 15px/1 Lato, sans-serif;
   color: #777;
 }
@@ -555,3 +555,18 @@ img{text-decoration:none;}
 .minuteIntervel a.selected{background:#fff;font-weight:600;color:#222;border:1px solid #1988d6;-moz-box-shadow:0px 0px 2px #959595;-webkit-box-shadow:0px 0px 2px #959595;box-shadow:0px 0px 2px #959595;}
 .fileuploadsize input[type="text"]{width:30%;margin-right:8px;}
 .fileuploadsize .intro{font-weight:600;}
+
+
+.mainWrapper{
+position: relative;
+padding-left: 250px;
+}
+.mainWrapper nav{
+position: fixed;
+left: 0;
+height: 100vh;
+top: 0;
+}
+.fullMax{
+  max-width: 100%
+}
